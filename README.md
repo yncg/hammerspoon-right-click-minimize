@@ -59,6 +59,35 @@ brew install --cask hammerspoon
 
 到 <https://www.hammerspoon.org/> 下载安装包，拖进「应用程序」。
 
+**方式 C — 用本仓库自带的离线包（免下载）**
+
+仓库内附了一份打包好的 Hammerspoon 应用，解压即用：
+
+| 文件 | 版本 | 大小 |
+|---|---|---|
+| `Hammerspoon-1.1.1-macOS.zip` | 1.1.1 | 9.5 MB |
+
+```bash
+# 1. 解压
+unzip Hammerspoon-1.1.1-macOS.zip
+
+# 2. 移动到「应用程序」目录（需要管理员密码）
+sudo mv Hammerspoon.app /Applications/
+
+# 3. 如果是通过浏览器下载的，去掉隔离属性，避免"已损坏"提示
+sudo xattr -dr com.apple.quarantine /Applications/Hammerspoon.app
+
+# 4. 启动
+open -a Hammerspoon
+```
+
+> **关于这个包**
+> - 它是 Hammerspoon **官方原版应用**，未做任何修改，Apple 代码签名完整（Team ID `VQCYSNZB89`、Bundle ID `org.hammerspoon.Hammerspoon`）。
+> - SHA256 校验值：`9ed882b8568f3547a60103e19800bfe9052adc7e1bdffcc99af20f55997ce9e6`
+>   下载后可自行核对：`shasum -a 256 Hammerspoon-1.1.1-macOS.zip`
+> - Hammerspoon 采用 **MIT 许可证**，允许自由再分发。原始项目：<https://github.com/Hammerspoon/hammerspoon>
+> - 如果你想用**最新版本**，请优先使用方式 A 或方式 B，本包仅为方便离线/快速部署而附带的版本快照。
+
 ### 第 2 步：启动并授予权限（关键）
 
 1. 打开 Hammerspoon，菜单栏会出现一个 🔨 图标。
